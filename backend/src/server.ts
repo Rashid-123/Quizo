@@ -8,7 +8,11 @@ import dotenv from "dotenv";
 dotenv.config();
 const app: Application = express();
 
-const allowedOrigins = ["http://localhost:5173", process.env.FRONTEND_URL]; // Add multiple origins
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://quizo-phi.vercel.app",
+  process.env.FRONTEND_URL,
+]; // Add multiple origins
 
 app.use(
   cors({
