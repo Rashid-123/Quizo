@@ -3,7 +3,7 @@ import { useContext } from "react";
 import {
   ThemeProviderContext,
   ThemeProviderState,
-} from "@/context/ThemeContext"; // Update path accordingly
+} from "@/context/ThemeContext";
 
 export function useTheme(): ThemeProviderState {
   const context = useContext(ThemeProviderContext);
