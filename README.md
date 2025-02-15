@@ -8,8 +8,8 @@
 
 ## 🚀 Docker Images
 
-- **Frontend Image:** [Docker Hub - Quizo Frontend](https://hub.docker.com/r/rashid29/quizo-frontend)
-- **Backend Image:** [Docker Hub - Quizo Backend](https://hub.docker.com/r/rashid29/quizo-backend)
+- **Frontend Image :**  https://hub.docker.com/r/rashid29/quizo-frontend
+- **Backend Image :**   https://hub.docker.com/r/rashid29/quizo-backend
 
 ---
 
