@@ -12,22 +12,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteQuiz = exports.updateQuiz = exports.getUserQuizzes = exports.createQuiz = void 0;
+exports.deleteQuiz = exports.updateQuiz = exports.getQuizById = exports.getUserQuizzes = exports.createQuiz = void 0;
 const db_connection_1 = __importDefault(require("../config/db_connection")); // ✅ Import database connection
-// Create a quiz
 const createQuiz = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log("Incoming request body:", req.body); // Debugging
         const { title, description, userId } = req.body;
+        // Validate input
+        if (!title || !description || !userId) {
+            res.status(400).json({ message: "All fields are required" });
+            return;
+        }
         const user = yield db_connection_1.default.user.findUnique({ where: { id: userId } });
-        if (!user)
-            return res.status(404).json({ message: "User not found" });
+        if (!user) {
+            res.status(404).json({ message: "User not found" });
+            return;
+        }
         const quiz = yield db_connection_1.default.quiz.create({
             data: { title, description, userId },
         });
         res.json({ success: true, message: "Quiz created successfully", quiz });
     }
     catch (error) {
-        res.status(500).json({ message: "Error creating quiz", error });
+        console.error("Error creating quiz:", error);
+        // Explicitly cast error to `Error`
+        const err = error;
+        res.status(500).json({
+            message: "Internal server error",
+            error: err.message || "Unknown error",
+        });
     }
 });
 exports.createQuiz = createQuiz;
@@ -45,6 +58,24 @@ const getUserQuizzes = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.getUserQuizzes = getUserQuizzes;
+// Get a single quiz by ID
+const getQuizById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const quizId = Number(req.params.id);
+        const quiz = yield db_connection_1.default.quiz.findUnique({
+            where: { id: quizId },
+        });
+        if (!quiz) {
+            res.status(404).json({ message: "Quiz not found" });
+            return;
+        }
+        res.json(quiz);
+    }
+    catch (error) {
+        res.status(500).json({ message: "Error fetching quiz", error });
+    }
+});
+exports.getQuizById = getQuizById;
 // Update a quiz
 const updateQuiz = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

@@ -8,6 +8,7 @@ const quizController_1 = require("../controllers/quizController");
 const router = express_1.default.Router();
 router.post("/", quizController_1.createQuiz);
 router.get("/:userId", quizController_1.getUserQuizzes);
+router.get("/quiz/:id", quizController_1.getQuizById);
 router.put("/:id", quizController_1.updateQuiz);
 router.delete("/:id", quizController_1.deleteQuiz);
 exports.default = router;
