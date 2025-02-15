@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { AuthContext } from "@/context/AuthContext"; // Import AuthContext
+import { AuthContext } from "@/context/AuthContext"; 
 
 const Navbar: React.FC = () => {
   const { isLoggedIn, logout } = useContext(AuthContext)!;
@@ -10,8 +10,8 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout(); // Call logout function from AuthContext
-    navigate("/");
+    logout(); 
+    navigate("/login");
   };
 
   return (
