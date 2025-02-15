@@ -1,7 +1,8 @@
 # Quizo - A Quiz App
 
-## 🌍 Live App URL
-[Quizo Live App](https://quizo-phi.vercel.app/)
+## 🌍 Live App URL (https://quizo-phi.vercel.app/)
+
+##     Backend URL ( https://quizo-backend-3g7k.onrender.com )
 
 ---
 
