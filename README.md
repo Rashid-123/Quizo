@@ -37,6 +37,23 @@ npm run dev  # Runs the backend on http://localhost:5000
 
 ---
 
+## 👅 Environment Variables
+
+### Frontend (`frontend/.env`)
+
+```
+VITE_API_URL = http://localhost:5000/api
+
+```
+
+### Backend (`backend/.env`)
+
+```
+DATABASE_URL = [ your_postgresql_url] ( I have used Neon in this project )
+FRONTEND_URL = "http://localhost:3000"
+```
+
+
 ## 🐳 Running with Docker
 
 ### 1️⃣ Pull the Docker Images
